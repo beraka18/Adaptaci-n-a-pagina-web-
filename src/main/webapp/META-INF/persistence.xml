@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+    version="3.0">
+    
+    <!-- Definición de la unidad de persistencia -->
+    <persistence-unit name="CrudadaptacionPU" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Configuración del proveedor JPA (EclipseLink o Hibernate) -->
+        <!-- EclipseLink (Proveedor actual) -->
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <!-- Opción para Hibernate: Si decides usar Hibernate, descomenta esta línea -->
+        <!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+
+        <!-- Clases de entidad -->
+        <class>com.tuproyecto.model.Usuario</class>
+        <class>com.tuproyecto.model.Producto</class>
+        <class>com.tuproyecto.model.OrdenDeCompra</class>
+        <class>com.tuproyecto.model.CarritoDeCompras</class>
+
+        <!-- Propiedades de la unidad de persistencia -->
+        <properties>
+            <!-- Configuración de la conexión a la base de datos -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Crud_adaptacion_a_pagina_web_stop"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/> <!-- Ajusta la contraseña si es necesario -->
+
+            <!-- Configuración específica de EclipseLink -->
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.ddl-generation" value="update"/>
+            <property name="eclipselink.show-sql" value="true"/>
+            <property name="eclipselink.format-sql" value="true"/>
+
+            <!-- Si decides usar Hibernate, estas propiedades serían para Hibernate -->
+            <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+            <!-- <property name="hibernate.show_sql" value="true"/> -->
+            <!-- <property name="hibernate.format_sql" value="true"/> -->
+        </properties>
+    </persistence-unit>
+</persistence>
